@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.js -e js,graphql --exec babel-node"
+    "start": "nodemon src/index.js -e js,graphql --exec babel-node",
+    "get-schema": "graphql get-schema -p prisma"
   },
   "author": "Clint Losee <clint.losee@gmail.com> (clintlosee.me)",
   "license": "MIT",
@@ -13,7 +14,9 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "graphql-cli": "^3.0.14",
     "graphql-yoga": "^1.16.7",
+    "prisma-binding": "^2.1.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
