@@ -11,32 +11,19 @@ const Mutation = {
     return prisma.mutation.createUser({ data: args.data }, info)
   },
 
-  updateUser(parent, args, { db }, info) {
-    const user = db.users.find(user => user.id === args.id)
+  async updateUser(parent, args, { prisma }, info) {
+    const userExists = await prisma.exists.User({ id: args.id })
 
-    if (!user) {
-      throw new Error('User not found.')
+    if (!userExists) {
+      throw new Error('User not found')
     }
 
-    if (typeof args.data.email === 'string') {
-      const emailTaken = db.users.some(user => user.email === args.data.email)
-
-      if (emailTaken) {
-        throw new Error('Email taken')
-      }
-
-      user.email = args.data.email
-    }
-
-    if (typeof args.data.name === 'string') {
-      user.name = args.data.name
-    }
-
-    if (typeof args.data.age !== 'undefined') {
-      user.age = args.data.age
-    }
-
-    return user
+    return prisma.mutation.updateUser({
+      where: {
+        id: args.id
+      },
+      data: args.data
+    }, info)
   },
 
   async deleteUser(parent, args, { prisma }, info) {
