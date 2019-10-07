@@ -22,8 +22,6 @@ const Subscription = {
           }
         }
       }, info)
-
-      // return pubsub.asyncIterator(`post`)
     }
   }
 }
