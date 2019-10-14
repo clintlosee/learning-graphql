@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/node,macos
 # Edit at https://www.gitignore.io/?templates=node,macos
 
@@ -98,6 +97,7 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+*.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -123,5 +123,11 @@ typings/
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+# Ignore config directory
+config/
+
+# Ignore dist directory
+dist/
 
 # End of https://www.gitignore.io/api/node,macos
